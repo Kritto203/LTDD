@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <ImageView
+        android:id="@+id/ivBbkg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/orange_background"
+        />
+
+    <ImageView
+        android:id="@+id/ivlogo"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/intro_pic"
+        android:layout_marginTop="10dp"
+        app:layout_anchor="@+id/ivBbkg"
+        />
+
+    <TextView
+        android:id="@+id/ivname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="580dp"
+        android:elevation="5dp"
+        android:fontFamily="@font/abril_fatface"
+        android:gravity="center"
+        android:text="Điều Master Chef"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@color/red"
+        android:layout_marginTop="550dp"
+        />
+
+    <ImageView
+        android:id="@+id/viewarc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="455dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/arc" />
+
+    <TextView
+        android:id="@+id/viewslogan"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="650dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="60dp"
+        android:text="Bản lĩnh thì cầm tiền vô đây"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
