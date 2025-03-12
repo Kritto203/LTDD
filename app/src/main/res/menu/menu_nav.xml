@@ -44,10 +44,6 @@
                     android:icon="@drawable/daonhthu"
                     android:title="Thống kê theo doanh thu" />
 
-                <item
-                    android:id="@+id/itThongKeTop"
-                    android:icon="@drawable/top110"
-                    android:title="Thống kê theo TOP 10" />
 
             </menu>
         </item>

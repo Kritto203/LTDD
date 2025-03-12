@@ -1,115 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp">
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chọn loại sản phẩm: "
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-        <Spinner
-            android:id="@+id/spChonLoaiSanPham"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <EditText
-        android:id="@+id/edtThemTenSanPham"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập tên sản phẩm"
-        android:layout_marginTop="15dp"/>
-    <EditText
-   
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập ảnh sản phẩm"
-        android:layout_marginTop="15dp"/>
-    <EditText
-
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-    android:hint="Nhập link ảnh sản phẩm"
-    android:layout_marginTop="1dp"/>
-    <EditText
-        android:id="@+id/edtThemGiaSanPham"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập giá sản phẩm"
-        android:layout_marginTop="15dp"/>
-    <EditText
-        android:id="@+id/edtThemGiamGia"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập giảm giá"
-        android:layout_marginTop="15dp"/>
-    <EditText
-        android:id="@+id/edtThemSoLuongTrongKho"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập số lượng trong kho"
-        android:layout_marginTop="15dp"/>
-    <EditText
-        android:id="@+id/edtThemNgaySanXuat"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập ngày sản xuất"
-        android:layout_marginTop="15dp"/>
-
-    <EditText
-        android:id="@+id/edtThemHanSuDung"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/edittextvienhong"
-        android:layout_margin="5dp"
-        android:hint="Nhập hạn sử dụng"
-        android:layout_marginTop="15dp"/>
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="end"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btnDialogHuyThemSanPham"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittextvienhong"
-            android:text="Hủy"/>
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btnDialogThemSanPham"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thêm"
-            android:background="@drawable/edittextvienhong"
-            android:layout_marginLeft="15dp"/>
-    </LinearLayout>
+        android:orientation="vertical"
+        android:padding="15dp">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn loại sản phẩm: "
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+            <Spinner
+                android:id="@+id/spChonLoaiSanPham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <EditText
+            android:id="@+id/edtThemTenSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập tên sản phẩm"
+            android:layout_marginTop="15dp"/>
+
+        <!-- Image link input -->
+        <EditText
+            android:id="@+id/edtThemLinkAnhSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập link ảnh sản phẩm"
+            android:inputType="textUri"
+            android:layout_marginTop="15dp"/>
+
+        <!-- Preview image button -->
+        <Button
+            android:id="@+id/btnXemAnhSanPham"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem trước ảnh"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="5dp"/>
+
+        <!-- Image preview -->
+        <ImageView
+            android:id="@+id/imgXemTruocSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:background="#EEEEEE"
+            android:layout_margin="5dp"/>
+
+        <EditText
+            android:id="@+id/edtThemGiaSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập giá sản phẩm"
+            android:inputType="number"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/edtThemGiamGia"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập giảm giá"
+            android:inputType="number"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/edtThemSoLuongTrongKho"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập số lượng trong kho"
+            android:inputType="number"
+            android:layout_marginTop="15dp"/>
+        <EditText
+            android:id="@+id/edtThemNgaySanXuat"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập ngày sản xuất"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/edtThemHanSuDung"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/edittextvienhong"
+            android:layout_margin="5dp"
+            android:hint="Nhập hạn sử dụng"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp">
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/btnDialogHuyThemSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittextvienhong"
+                android:text="Hủy"/>
+            <Button
+                android:layout_weight="1"
+                android:id="@+id/btnDialogThemSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thêm"
+                android:background="@drawable/edittextvienhong"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

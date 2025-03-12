@@ -21,6 +21,7 @@ public class HoaDonDAO {
         Database database = new Database(context);
         db = database.getWritableDatabase();
     }
+
     public long insert(HoaDon hoaDon) {
         ContentValues values = new ContentValues();
         values.put("mahoadon", hoaDon.getMahoadon());
@@ -42,7 +43,6 @@ public class HoaDonDAO {
         values.put("manguoidung", hoaDon.getManguoidung());
         return db.update("hoadon", values, "mahoadon=?", new String[]{String.valueOf(hoaDon.getMahoadon())});
     }
-
 
     @SuppressLint("Range")
     public List<HoaDon> getDSHoaDon(String sql, String... SelectArgt) {
@@ -70,7 +70,6 @@ public class HoaDonDAO {
         return getDSHoaDon(sql);
     }
 
-
     public List<HoaDon> getDSTrangThai0(String sql, String... SelectArgt) {
         List<HoaDon> list = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT hd.mahoadon, nd.manguoidung, sp.masanpham,nd.hoten, hd.ngaymua, hd.tongtien, hd.trangthai\n" + "FROM hoadon hd, nguoidung nd, sanpham sp\n" + "WHERE hd.manguoidung = nd.manguoidung and hd.masanpham =sp.masanpham and trangthai = 0 \n", null);
@@ -87,7 +86,6 @@ public class HoaDonDAO {
         String sql = "SELECT * FROM hoadon";
         return getDSTrangThai0(sql);
     }
-
 
     public List<HoaDon> getDSTrangThai1(String sql, String... SelectArgt) {
         List<HoaDon> list = new ArrayList<>();
@@ -107,7 +105,6 @@ public class HoaDonDAO {
         String sql = "SELECT * FROM hoadon";
         return getDSTrangThai1(sql);
     }
-
 
     public List<HoaDon> getDSTrangThai3(String sql, String... SelectArgt) {
         List<HoaDon> list = new ArrayList<>();
@@ -147,17 +144,39 @@ public class HoaDonDAO {
         return getDSTrangThai2(sql);
     }
 
-
+    // Updated delete methods with proper transaction handling
     public int delete(HoaDon obj) {
-        return db.delete("hoadon", "mahoadon=?", new String[]{String.valueOf(obj.getMahoadon())});
+        return delete(obj.getMahoadon());
     }
 
     public int delete(int mahoadon) {
-        return db.delete("hoadon", "mahoadon=?", new String[]{String.valueOf(mahoadon)});
+        int result = 0;
+
+        try {
+            // Start a transaction
+            db.beginTransaction();
+
+            // First, delete any related records in the chitietdonhang table
+            db.delete("chitietdonhang", "mahoadon=?", new String[]{String.valueOf(mahoadon)});
+
+            // Then delete the record from the hoadon table
+            result = db.delete("hoadon", "mahoadon=?", new String[]{String.valueOf(mahoadon)});
+
+            // Mark transaction as successful
+            db.setTransactionSuccessful();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = -1;
+        } finally {
+            // End the transaction
+            if (db.inTransaction()) {
+                db.endTransaction();
+            }
+        }
+
+        return result;
     }
-
-
-
 
     public List<HoaDon> getAllKH(String manguoidung) {
         String sql = "SELECT * FROM hoadon WHERE manguoidung=?";
@@ -196,7 +215,7 @@ public class HoaDonDAO {
         return list;
     }
 
-
+    // Added back the checkMaHoaDon method
     public int checkMaHoaDon(String id) {
         String sql = "SELECT * FROM hoadon WHERE mahoadon=?";
         List<HoaDon> list = getDSHoaDon202(sql, id);
@@ -212,9 +231,7 @@ public class HoaDonDAO {
         return list.get(0);
     }
 
-
     //get data nhieu tham so
-
     @SuppressLint("Range")
     public List<HoaDon> getDataThu(String sql, String... selectionArgs) {
         List<HoaDon> list = new ArrayList<>();
@@ -235,7 +252,4 @@ public class HoaDonDAO {
         }
         return list;
     }
-
-
 }
-

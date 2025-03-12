@@ -72,10 +72,10 @@ public class ManHinhChinhFragment extends Fragment {
 
         // Danh sách URL ảnh cho ViewPager2
         List<String> listSlide = new ArrayList<>();
-        listSlide.add("https://beptueu.vn/hinhanh/tintuc/top-15-hinh-anh-mon-an-ngon-viet-nam-khien-ban-khong-the-roi-mat-1.jpg");
-        listSlide.add("https://beptueu.vn/hinhanh/tintuc/banh-cuon-hinh-anh-mon-an-dac-san-viet-nam.jpg");
-        listSlide.add("https://beptueu.vn/hinhanh/tintuc/top-15-hinh-anh-mon-an-ngon-viet-nam-khien-ban-khong-the-roi-mat-5.jpg");
-        listSlide.add("https://beptueu.vn/hinhanh/tintuc/top-15-hinh-anh-mon-an-ngon-viet-nam-khien-ban-khong-the-roi-mat-8.jpg");
+        listSlide.add("https://media.baoquangninh.vn/dataimages/201306/original/images679639_54b3e28loikhuyenchonhungnguoit.jpg");
+        listSlide.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB63WlfUr5jhHnAWQ34SCNIwcpTHRzhYw0kw&s");
+        listSlide.add("https://cdn.baohatinh.vn/images/757c121c82e2f1709cfa102275ab673b4c8fb15ef10b5c635cd316588728174f6c510c7c52f6c18d1f541e87978c5a5b2694fb951e97cd71a0766be40a887ea7/108d1084140t5916l9-1473149955-thuc-an-n.jpg");
+        listSlide.add("https://mqflavor.com/wp-content/uploads/2024/06/ga-ran-kfc-thu-loi-nhuan-thi-truong-thuc-an-nhanh-viet-nam.jpg");
 
         // Cài đặt adapter cho ViewPager2
         ImageSliderAdapter adapter = new ImageSliderAdapter(getContext(), listSlide);
@@ -130,7 +130,6 @@ public class ManHinhChinhFragment extends Fragment {
                 maLoaiCheckSpiner = 1;
             }
         });
-
         // Tìm kiếm sản phẩm
         timkiemsanpham.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

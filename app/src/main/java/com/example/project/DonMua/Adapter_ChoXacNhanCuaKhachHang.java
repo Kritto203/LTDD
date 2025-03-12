@@ -32,7 +32,6 @@ public class Adapter_ChoXacNhanCuaKhachHang extends RecyclerView.Adapter<Adapter
         this.hoaDonDAO = hoaDonDAO;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -56,22 +55,34 @@ public class Adapter_ChoXacNhanCuaKhachHang extends RecyclerView.Adapter<Adapter
                 Intent intent = new Intent(context, HoaDonChiTietActivity.class);
                 intent.putExtra("mahoadon", hoaDon.getMahoadon());
                 context.startActivity(intent);
-
             }
         });
 
+        // UPDATED huydonhang click handler
         holder.huydonhang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HoaDonDAO hoaDonDAO = new HoaDonDAO(context);
-                int check = hoaDonDAO.delete(list.get(position).getMahoadon());
-                if (check > 0) {
-                    list.clear();
-                    list = (ArrayList<HoaDon>) hoaDonDAO.getTrangThai0();
-                    notifyDataSetChanged();
-                    Toast.makeText(context, "Đã hủy đơn hàng thành công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Đã có sản phẩm, không thể xóa", Toast.LENGTH_SHORT).show();
+                try {
+                    if (position >= 0 && position < list.size()) {
+                        int mahoadon = list.get(position).getMahoadon();
+                        HoaDonDAO hoaDonDAO = new HoaDonDAO(context);
+
+                        int check = hoaDonDAO.delete(mahoadon);
+                        if (check > 0) {
+                            // Remove item from the list safely
+                            list.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, list.size());
+                            Toast.makeText(context, "Đã hủy đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Không thể hủy đơn hàng", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(context, "Lỗi: Không tìm thấy đơn hàng", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

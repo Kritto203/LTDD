@@ -56,7 +56,7 @@
                 android:background="@drawable/bkgintro2"
                 android:backgroundTint="@color/white"
                 android:elevation="3dp"
-                android:text="Sigin"
+                android:text="Sigup"
                 android:textColor="@color/white"
                 android:textSize="25dp" />
         </LinearLayout>

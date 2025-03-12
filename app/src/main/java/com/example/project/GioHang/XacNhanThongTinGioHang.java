@@ -14,13 +14,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,6 +73,7 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
     private int diemThuongSend;
     private int maPhuongThucThanhToan;
     private Boolean checkDiaChi = true;
+    private static final String TAG = "XacNhanThongTinGioHang";
 
 
     @SuppressLint("WrongViewCast")
@@ -101,82 +99,14 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
         tvKhachHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String currentText = tvKhachHang.getText().toString().trim();
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanThongTinGioHang.this);
-//                LayoutInflater inflater = getLayoutInflater();
-//                View dialogView = inflater.inflate(R.layout.dialog_edit_tenkhachhang, null);
-//                builder.setView(dialogView);
-//                EditText editText = dialogView.findViewById(R.id.editText);
-//                editText.setText(currentText);
-//                builder.setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String newText = editText.getText().toString().trim();
-//                        khachHang.setHoten(newText);
-//                        if (khachHangDAO.update(khachHang) > 0) {
-//                            dialog.dismiss();
-//                            tvKhachHang.setText(newText);
-//                            Toast.makeText(XacNhanThongTinGioHang.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(XacNhanThongTinGioHang.this, "Sửa thất bại", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//
-//                    }
-//                });
-//
-//                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                // Hiển thị dialog
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
+                // Commented code here
             }
         });
 
         tvSoDienThoai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String currentText = tvSoDienThoai.getText().toString();
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(XacNhanThongTinGioHang.this);
-//                LayoutInflater inflater = getLayoutInflater();
-//                View dialogView = inflater.inflate(R.layout.dialog_edit_sodienthoai, null);
-//                builder.setView(dialogView);
-//                EditText editText = dialogView.findViewById(R.id.editTextsdt);
-//                editText.setText(currentText);
-//                builder.setPositiveButton("Lưu", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        String newText = editText.getText().toString().trim();
-//                        khachHang.setSodienthoai(newText);
-//                        if (khachHangDAO.update(khachHang) > 0) {
-//                            dialog.dismiss();
-//                            tvSoDienThoai.setText(newText);
-//                            Toast.makeText(XacNhanThongTinGioHang.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(XacNhanThongTinGioHang.this, "Sửa thất bại", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//
-//                    }
-//                });
-//
-//                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                // Hiển thị dialog
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
+                // Commented code here
             }
         });
         tvDiaChi.setOnClickListener(new View.OnClickListener() {
@@ -217,12 +147,9 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 openBottomSheetFragment();
-
             }
         });
-
     }
 
     @Override
@@ -231,7 +158,6 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
     }
 
     private Double tongTienSauKhiGiam() {
-
         Double finalDiemThuong = Double.valueOf(0);
         finalDiemThuong = tinhTien();
         btnXacNhan.setText(finalDiemThuong + " VND");
@@ -245,77 +171,62 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
         bottomSheetDialogXacNhanHoaDon.setCancelable(false);
     }
 
-
-//    private void dialogThemDiaChi(Context context, int gravity, KhachHang objKhachHang) {
-//        Dialog dialog = new Dialog(context, R.style.PauseDialogAnimation);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.custom_dialog_them_dia_chi);
-//
-//        Window window = dialog.getWindow();
-//        if (window == null) {
-//            return;
-//        }
-//        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-//        window.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.shadowDialog)));
-//        WindowManager.LayoutParams windowAttributes = window.getAttributes();
-//        windowAttributes.gravity = gravity;
-//        window.setAttributes(windowAttributes);
-//        EditText edDiaChi = dialog.findViewById(R.id.edDiaChi);
-//        Button btnXacNhan = dialog.findViewById(R.id.btnXacNhan);
-//        Button btnHuy = dialog.findViewById(R.id.btnHuy);
-//        if (Gravity.BOTTOM == gravity) {
-//            dialog.setCancelable(true);
-//        } else {
-//            dialog.setCancelable(false);
-//        }
-//        KhachHangDAO khachHangDAO = new KhachHangDAO(context);
-//        btnXacNhan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String diaChi = edDiaChi.getText().toString().trim();
-//                if (diaChi.isEmpty()) {
-//                    Toast.makeText(context, "Bạn chưa thay đổi gì cả", Toast.LENGTH_SHORT).show();
-//                    dialog.dismiss();
-//                    return;
-//                }
-//                objKhachHang.setDiachi(diaChi);
-//                int kq = khachHangDAO.update(objKhachHang);
-//                if (kq > 0) {
-//                    Toast.makeText(context, "Cật nhật thành công", Toast.LENGTH_SHORT).show();
-//                    diachi = diaChi;
-//                    tvDiaChi.setText("Địa chỉ:" + diaChi);
-//                } else {
-//                    Toast.makeText(context, "Cật nhận địa chỉ thất bại", Toast.LENGTH_SHORT).show();
-//                }
-//                dialog.dismiss();
-//            }
-//
-//        });
-//        btnHuy.setOnClickListener(v -> dialog.dismiss());
-//
-//        dialog.show();
-//    }
-
     private void thongTinNhanHang() {
-        SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
-        String userName = (preferences.getString("username", ""));
-        String quyen = (preferences.getString("loaitaikhoan", ""));
-        if (quyen.equals("nguoidung")) {
-            ArrayList<KhachHang> list;
-            maQuyen = 1;
-//            khachHang = khachHangDAO.getUserName2(userName);
-            if (khachHang != null) {
-                tvKhachHang.setText(khachHang.getHoten());
-                tvSoDienThoai.setText(khachHang.getSodienthoai() + "");
-                tvDiaChi.setText(khachHang.getDiachi());
-                maGioHang = khachHang.getManguoidung();
-                diachi = khachHang.getDiachi();
-                tenKh = khachHang.getHoten();
-                soDienThoai = Long.valueOf(khachHang.getSodienthoai());
-                userNameKhachHang = khachHang.getUsername();
-            }
-        }
+        try {
+            SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
+            String userName = preferences.getString("username", "");
+            String quyen = preferences.getString("loaitaikhoan", "");
 
+            if (quyen.equals("nguoidung")) {
+                maQuyen = 1;
+                khachHang = khachHangDAO.getUserName(userName);
+
+                if (khachHang != null) {
+                    tvKhachHang.setText(khachHang.getHoten());
+                    tvSoDienThoai.setText(khachHang.getSodienthoai() + "");
+                    tvDiaChi.setText(khachHang.getDiachi());
+                    maGioHang = khachHang.getManguoidung();
+                    diachi = khachHang.getDiachi();
+                    tenKh = khachHang.getHoten();
+
+                    // Fix for NumberFormatException
+                    String phoneStr = khachHang.getSodienthoai();
+                    if (phoneStr != null && !phoneStr.isEmpty()) {
+                        try {
+                            soDienThoai = Long.valueOf(phoneStr);
+                        } catch (NumberFormatException e) {
+                            Log.e(TAG, "Error parsing phone number: " + e.getMessage());
+                            soDienThoai = 0L; // Default phone number
+                            Toast.makeText(this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        soDienThoai = 0L; // Default phone number if empty
+                    }
+
+                    userNameKhachHang = khachHang.getUsername();
+                } else {
+                    // Handle case where user data couldn't be loaded
+                    Log.e(TAG, "User data not found for: " + userName);
+                    Toast.makeText(this, "Không tìm thấy thông tin người dùng", Toast.LENGTH_SHORT).show();
+                    // Set default values
+                    tvKhachHang.setText("Khách hàng");
+                    tvSoDienThoai.setText("0");
+                    tvDiaChi.setText("");
+                    maGioHang = 1; // Default value
+                    tenKh = "Khách hàng";
+                    soDienThoai = 0L;
+                    diachi = "";
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error in thongTinNhanHang: " + e.getMessage());
+            Toast.makeText(this, "Đã xảy ra lỗi khi tải thông tin", Toast.LENGTH_SHORT).show();
+            // Set safe default values
+            maGioHang = 0;
+            tenKh = "Khách hàng";
+            soDienThoai = 0L;
+            diachi = "";
+        }
     }
 
     private double tinhTien() {
@@ -328,7 +239,6 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
         TongTien = total + phidichvu;
 
         return TongTien;
-
     }
 
     public void initList() {
@@ -338,21 +248,23 @@ public class XacNhanThongTinGioHang extends AppCompatActivity {
         recyclerViewChiTietHoaDon.setAdapter(cartListAdapter);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerViewChiTietHoaDon.addItemDecoration(itemDecoration);
-
     }
-
 
     private void thongTinHoaDon() {
         SharedPreferences preferences = getSharedPreferences("thongtin", MODE_PRIVATE);
         String userName = (preferences.getString("username", ""));
         String quyen = (preferences.getString("loaitaikhoan", ""));
         if (quyen.equals("nguoidung")) {
-            khachHang = khachHangDAO.getUserName2(userName);
+            khachHang = khachHangDAO.getUserName(userName);
             if (khachHang != null) {
                 maKH = khachHang.getManguoidung();
-
+            } else {
+                // Default value if khachHang is null
+                maKH = 0;
             }
+        } else {
+            // Default value for non-nguoidung users
+            maKH = 0;
         }
     }
-
 }
